@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "nx"
+    "ng": "nx",
+    "start": "nx serve repayment-planner"
   },
   "private": true,
   "dependencies": {
@@ -16,6 +17,7 @@
     "@angular/platform-browser-dynamic": "~17.2.0",
     "@angular/router": "~17.2.0",
     "@nx/angular": "18.1.2",
+    "ag-grid-angular": "^31.2.0",
     "david-ui-angular": "^1.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
