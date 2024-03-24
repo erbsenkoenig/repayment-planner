@@ -20,7 +20,10 @@
           "apps/repayment-planner/src/favicon.ico",
           "apps/repayment-planner/src/assets"
         ],
-        "styles": ["apps/repayment-planner/src/styles.scss"],
+        "styles": [
+          "apps/repayment-planner/src/styles.scss",
+          "./node_modules/david-ui-angular/styles/_styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
