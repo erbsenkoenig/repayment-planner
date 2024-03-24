@@ -5,8 +5,6 @@ import { Repayment } from './repayment.types';
   providedIn: 'root',
 })
 export class RepaymentService {
-  constructor() {}
-
   calculateRepaymentPlan({
     debitInterest,
     loanAmount,

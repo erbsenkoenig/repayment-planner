@@ -13,20 +13,33 @@ exports[`PlannerComponent should show table if repayments are available 1`] = `
 exports[`PlannerComponent should show table if repayments are available 2`] = `
 [
   {
+    "field": "id",
+    "headerName": "#",
+    "width": 50,
+  },
+  {
     "field": "residualDept",
+    "flex": 1,
     "headerName": "Restschuld",
+    "valueFormatter": [Function],
   },
   {
     "field": "interest",
+    "flex": 1,
     "headerName": "Zinsen",
+    "valueFormatter": [Function],
   },
   {
     "field": "repayment",
+    "flex": 1,
     "headerName": "Tilgung",
+    "valueFormatter": [Function],
   },
   {
     "field": "rate",
+    "flex": 1,
     "headerName": "Rate",
+    "valueFormatter": [Function],
   },
 ]
 `;
