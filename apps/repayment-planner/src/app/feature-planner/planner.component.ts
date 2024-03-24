@@ -10,7 +10,11 @@ import {
 import { RepaymentService } from './repayment.service';
 import { Repayment } from './repayment.types';
 import { AgGridAngular } from 'ag-grid-angular';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, ValueFormatterFunc } from 'ag-grid-community';
+
+const valueFormatter: ValueFormatterFunc = (p) => `${p.value.toFixed(2)} EUR`;
+const residualDept: ValueFormatterFunc = (p) =>
+  valueFormatter({ ...p, value: p.value * -1 });
 
 @Component({
   selector: 'app-planner',
@@ -30,12 +34,18 @@ export class PlannerComponent {
   private repaymentService: RepaymentService = inject(RepaymentService);
 
   repayments: Repayment[] = [];
+
   colDefs: ColDef[] = [
     { field: 'id', headerName: '#', width: 50 },
-    { field: 'residualDept', headerName: 'Restschuld', flex: 1 },
-    { field: 'interest', headerName: 'Zinsen', flex: 1 },
-    { field: 'repayment', headerName: 'Tilgung', flex: 1 },
-    { field: 'rate', headerName: 'Rate', flex: 1 },
+    {
+      field: 'residualDept',
+      headerName: 'Restschuld',
+      flex: 1,
+      valueFormatter: residualDept,
+    },
+    { field: 'interest', headerName: 'Zinsen', flex: 1, valueFormatter },
+    { field: 'repayment', headerName: 'Tilgung', flex: 1, valueFormatter },
+    { field: 'rate', headerName: 'Rate', flex: 1, valueFormatter },
   ];
 
   formGroup = this.fb.group<{
