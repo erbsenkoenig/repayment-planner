@@ -31,10 +31,11 @@ export class PlannerComponent {
 
   repayments: Repayment[] = [];
   colDefs: ColDef[] = [
-    { field: 'residualDept', headerName: 'Restschuld' },
-    { field: 'interest', headerName: 'Zinsen' },
-    { field: 'repayment', headerName: 'Tilgung' },
-    { field: 'rate', headerName: 'Rate' },
+    { field: 'id', headerName: '#', width: 50 },
+    { field: 'residualDept', headerName: 'Restschuld', flex: 1 },
+    { field: 'interest', headerName: 'Zinsen', flex: 1 },
+    { field: 'repayment', headerName: 'Tilgung', flex: 1 },
+    { field: 'rate', headerName: 'Rate', flex: 1 },
   ];
 
   formGroup = this.fb.group<{

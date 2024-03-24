@@ -1,35 +1,48 @@
-<div class="shadow-lg bg-white p-3">
-  <form
-    class="grid grid-cols-2 gap-2"
-    [formGroup]="formGroup"
-    (ngSubmit)="calculateRepaymentPlan()"
-  >
-    <dui-input label="Darlehensbetrag" formControlName="loanAmount"></dui-input>
-    <dui-input
-      label="Sollzins (Prozent)"
-      formControlName="debitInterest"
-    ></dui-input>
-    <dui-input
-      label="Tilgung (Prozent)"
-      formControlName="repaymentRate"
-    ></dui-input>
-    <dui-input
-      label="Zinsbindung (Jahre)"
-      formControlName="fixedInterestRate"
-    ></dui-input>
-    <div></div>
-    <dui-button type="submit">Berechnen</dui-button>
-  </form>
-</div>
+<div class="space-y-10 py-10 flex flex-col h-full">
+  <div class="shadow-lg bg-white p-8">
+    <form
+      class="grid grid-cols-1 md:grid-cols-2 gap-4"
+      [formGroup]="formGroup"
+      (ngSubmit)="calculateRepaymentPlan()"
+    >
+      <div>
+        <dui-input
+          size="md"
+          label="Darlehensbetrag"
+          formControlName="loanAmount"
+        ></dui-input>
+      </div>
 
-@if(repayments.length) {
-<div class="h-full w-full">
-  <ag-grid-angular
-    class="ag-theme-quartz"
-    style="width: 100%; height: 500px"
-    [rowData]="repayments"
-    [columnDefs]="colDefs"
-  >
-  </ag-grid-angular>
+      <dui-input
+        size="md"
+        label="Sollzins (Prozent)"
+        formControlName="debitInterest"
+      ></dui-input>
+      <dui-input
+        size="md"
+        label="Tilgung (Prozent)"
+        formControlName="repaymentRate"
+      ></dui-input>
+      <dui-input
+        size="md"
+        label="Zinsbindung (Jahre)"
+        formControlName="fixedInterestRate"
+      ></dui-input>
+      <div class="col-span-1 md:col-span-2 place-self-end">
+        <dui-button type="submit">Berechnen</dui-button>
+      </div>
+    </form>
+  </div>
+
+  @if(repayments.length) {
+  <div class="h-full w-full flex-grow">
+    <ag-grid-angular
+      class="ag-theme-quartz"
+      style="width: 100%; height: 100%"
+      [rowData]="repayments"
+      [columnDefs]="colDefs"
+    >
+    </ag-grid-angular>
+  </div>
+  }
 </div>
-}

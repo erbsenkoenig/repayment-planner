@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '@angular/cdk/overlay-prebuilt.css';
+
 /* Core Grid CSS */
 @import 'ag-grid-community/styles/ag-grid.css';
 /* Quartz Theme Specific CSS */

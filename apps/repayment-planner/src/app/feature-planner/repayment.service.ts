@@ -26,6 +26,7 @@ export class RepaymentService {
 
     // push initial payment
     result.push({
+      id: 0,
       residualDept: loanAmount * -1,
       interest: 0,
       rate: loanAmount * -1,
@@ -34,14 +35,12 @@ export class RepaymentService {
 
     const amountOfPayments = fixedInterestRate * 12;
 
-    // (Darlehenshöhe / 100) x Zinssatz
     const initialInterestComponent = (loanAmount / (100 * 12)) * debitInterest;
-    // (Darlehenshöhe / 100) x Tilgungssatz im Jahr
     const initialRepaymentComponent = (loanAmount / (100 * 12)) * repaymentRate;
-    // Zinsanteil + Tilgungsanteil
     const rate = initialRepaymentComponent + initialInterestComponent;
 
     result.push({
+      id: 1,
       residualDept: loanAmount - initialRepaymentComponent,
       interest: initialInterestComponent,
       repayment: initialRepaymentComponent,
@@ -49,14 +48,29 @@ export class RepaymentService {
     });
 
     for (let i = 2; i <= amountOfPayments; i++) {
+      // get prev residual dept for interest calculation
       const prevResidualDept = result[i - 1].residualDept;
+      const prevRepaymentRate = result[i - 1].repayment;
 
-      // (Darlehenshöhe / 100) x Zinssatz
+      // if the prev residual dept was smaller than the repayment rate
+      // the last payment was the last
+      if (prevResidualDept < prevRepaymentRate) {
+        break;
+      }
+
       const interest = (prevResidualDept / (100 * 12)) * debitInterest;
       const repayment = rate - interest;
 
+      // new residualDept is prev minus curr repayment
+      let residualDept = prevResidualDept - repayment;
+      // if the result would be below 0 the current repayment is just what we have left
+      if (residualDept < 0) {
+        residualDept = prevResidualDept;
+      }
+
       result.push({
-        residualDept: prevResidualDept - repayment,
+        id: i,
+        residualDept,
         interest,
         repayment,
         rate,

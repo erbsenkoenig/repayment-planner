@@ -4,4 +4,5 @@ export interface Repayment {
   interest: number;
   repayment: number; // Tilgung
   rate: number;
+  id: number;
 }
