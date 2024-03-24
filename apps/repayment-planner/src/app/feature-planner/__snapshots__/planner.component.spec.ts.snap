@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlannerComponent should calculate repayments on submit  1`] = `undefined`;
+
+exports[`PlannerComponent should calculate repayments on submit  2`] = `[]`;
+
+exports[`PlannerComponent should show table if repayments are available 1`] = `
+[
+  "REPAYMENT",
+]
+`;
+
+exports[`PlannerComponent should show table if repayments are available 2`] = `
+[
+  {
+    "field": "residualDept",
+    "headerName": "Restschuld",
+  },
+  {
+    "field": "interest",
+    "headerName": "Zinsen",
+  },
+  {
+    "field": "repayment",
+    "headerName": "Tilgung",
+  },
+  {
+    "field": "rate",
+    "headerName": "Rate",
+  },
+]
+`;
